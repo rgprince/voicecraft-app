@@ -18,11 +18,10 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   
-  # Audio
-  record: ^5.0.4
-  just_audio: ^0.9.36
-  audio_waveforms: ^1.0.5
-  pitch_detector_dart: ^1.0.5
+  # Audio (placeholder for future features - currently not used)
+  # record: ^5.0.4
+  # just_audio: ^0.9.36
+  # audio_waveforms: ^1.0.5
   
   # UI & Animations
   flutter_animate: ^4.3.0
