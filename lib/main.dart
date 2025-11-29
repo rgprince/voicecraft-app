@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'utils/theme.dart';
-import 'screens/home_screen.dart';
+import 'screens/main_navigation_screen.dart';
 import 'models/practice_record.dart';
 import 'models/user_settings.dart';
 
@@ -44,7 +44,7 @@ class VoiceCraftApp extends ConsumerWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const HomeScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }
