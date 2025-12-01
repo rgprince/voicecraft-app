@@ -6,6 +6,8 @@ import 'song_library_screen.dart';
 import 'daily_tracker_screen.dart';
 import 'progress_screen.dart';
 
+import 'learn_screen.dart';
+
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -18,6 +20,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
+    const LearnScreen(),
     const PracticeLibraryScreen(),
     const DailyTrackerScreen(),
     const SongLibraryScreen(),
@@ -54,6 +57,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Learn',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.fitness_center),

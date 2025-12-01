@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../utils/theme.dart';
 import '../models/training_exercise.dart';
+import '../widgets/anatomy_painter.dart';
 
 class ExerciseDetailScreen extends StatelessWidget {
   final TrainingExercise exercise;
@@ -93,11 +94,30 @@ class ExerciseDetailScreen extends StatelessWidget {
             if (exercise.anatomyFocus != null)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: _buildSection(
-                  context,
-                  '🫀 Anatomy Focus',
-                  exercise.anatomyFocus!,
-                  color,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildSection(
+                      context,
+                      '🫀 Anatomy Focus',
+                      exercise.anatomyFocus!,
+                      color,
+                    ),
+                    const SizedBox(height: 16),
+                    // Visual Anatomy Placeholder (Math-based drawing)
+                    Container(
+                      height: 150,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: color.withOpacity(0.05),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: color.withOpacity(0.2)),
+                      ),
+                      child: CustomPaint(
+                        painter: AnatomyPainter(color: color),
+                      ),
+                    ).animate().fadeIn(delay: 300.ms),
+                  ],
                 ),
               ),
 

@@ -246,6 +246,24 @@ class _SongLibraryScreenState extends State<SongLibraryScreen>
                   'Practice Tips',
                   song['tips'] ?? 'Focus on clear pronunciation and breath control.',
                 ),
+
+                const SizedBox(height: 16),
+
+                // Breakdown
+                if (song['breakdown'] != null)
+                  _buildDetailSection(
+                    'Breakdown',
+                    song['breakdown'],
+                  ),
+
+                const SizedBox(height: 16),
+
+                // Lyrics
+                if (song['lyrics'] != null)
+                  _buildDetailSection(
+                    'Lyrics',
+                    song['lyrics'],
+                  ),
                 
                 const SizedBox(height: 80),
               ],
@@ -287,6 +305,11 @@ class _SongLibraryScreenState extends State<SongLibraryScreen>
       'bpm': 65,
       'level': 'Beginner',
       'tips': 'Perfect for slow, emotional delivery. Focus on breath control.',
+      'breakdown': 'Focus on the "Lag jaa" phrase - sustain the "aa" vowel. Take a deep breath before "Ke phir".',
+      'lyrics': '''Lag ja gale ki phir
+Ye hasin raat ho na ho
+Shayad phir is janam mein
+Mulakat ho na ho''',
     },
     {
       'title': 'Tum Hi Ho',
@@ -296,6 +319,11 @@ class _SongLibraryScreenState extends State<SongLibraryScreen>
       'bpm': 76,
       'level': 'Beginner',
       'tips': 'Excellent for practicing sustained notes and emotional expression.',
+      'breakdown': 'Hold the "Tum" note steady. Soften the "Hi" to connect smoothly to "Ho".',
+      'lyrics': '''Hum tere bin ab reh nahi sakte
+Tere bina kya wajood mera
+Tujhse juda gar ho jaayenge
+Toh khud se hi ho jaayenge juda''',
     },
     {
       'title': 'Pani Da Rang',
@@ -305,6 +333,11 @@ class _SongLibraryScreenState extends State<SongLibraryScreen>
       'bpm': 85,
       'level': 'Beginner',
       'tips': 'Simple, catchy melody. Great for building confidence.',
+      'breakdown': 'Keep the rhythm light. Pronounce "Pani" clearly with a soft "P".',
+      'lyrics': '''Pani da rang vekh ke
+Aankhiyaan jo anju rul de
+Aankhiyaan jo anju rul de
+(Pani da rang vekh ke)''',
     },
     
     // Level 2 - Intermediate
