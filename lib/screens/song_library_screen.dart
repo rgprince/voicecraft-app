@@ -349,6 +349,7 @@ Aankhiyaan jo anju rul de
       'bpm': 105,
       'level': 'Intermediate',
       'tips': 'Practice gentle rhythm and emotional build-up.',
+      'breakdown': 'Focus on the soft "P" in the title. Practice the ascending melody pattern. Use breath marks before each phrase. Try humming the melody first before adding words.',
     },
     {
       'title': 'Channa Mereya',
@@ -358,6 +359,7 @@ Aankhiyaan jo anju rul de
       'bpm': 90,
       'level': 'Intermediate',
       'tips': 'Balance soft singing with emotional intensity.',
+      'breakdown': 'The "Ch" sound requires tongue placement behind upper teeth. Practice the emotional crescendo in the chorus. Focus on breath control during sustained notes. Work on the falsetto transitions.',
     },
     {
       'title': 'Jeena Jeena',
@@ -367,6 +369,7 @@ Aankhiyaan jo anju rul de
       'bpm': 75,
       'level': 'Intermediate',
       'tips': 'Focus on smooth note transitions and breath control.',
+      'breakdown': 'Repeat the title phrase slowly - feel the "J" placement. Practice connecting phrases without gaps. Use diaphragmatic breathing for the long phrases. Work on the nasal resonance in Hindi vowels.',
     },
     
     // Level 3 - Advanced
@@ -378,6 +381,7 @@ Aankhiyaan jo anju rul de
       'bpm': 140,
       'level': 'Advanced',
       'tips': 'Ultimate test of fast articulation! Start at 70% tempo.',
+      'breakdown': 'This is your articulation exam! Start at 50% speed. Focus on consonant clusters like "kh" (खिड़की). Practice with metronome, increase 10% each week. Record yourself and compare clarity. Master tongue twisters first.',
     },
     {
       'title': 'Gulabi Aankhen',
@@ -387,6 +391,7 @@ Aankhiyaan jo anju rul de
       'bpm': 120,
       'level': 'Advanced',
       'tips': 'High-energy with repetitive phrases. Focus on rhythmic delivery.',
+      'breakdown': 'The repetitive "Gulabi" requires consistent energy. Practice the retroflex sounds in "आँखें". Work on maintaining pitch during fast passages. Use staccato practice for rhythmic precision.',
     },
   ];
 
@@ -400,6 +405,7 @@ Aankhiyaan jo anju rul de
       'bpm': 75,
       'level': 'Beginner',
       'tips': 'Classic for practicing clear vowels and slow pace.',
+      'breakdown': 'Focus on the "TW" consonant cluster. Practice elongating each vowel: "Twin-kle Twin-kle". Use this to establish breath control basics. Perfect for warming up.',
     },
     {
       'title': 'Happy Birthday',
@@ -408,6 +414,7 @@ Aankhiyaan jo anju rul de
       'bpm': 120,
       'level': 'Beginner',
       'tips': 'Everyone knows it! Practice hitting each note clearly.',
+      'breakdown': 'Practice the octave jump on "Happy". Focus on clear "B" and "D" sounds. Use this familiar melody to practice pitch accuracy. Great for building confidence.',
     },
     
     // Level 2 - Intermediate
@@ -418,6 +425,7 @@ Aankhiyaan jo anju rul de
       'bpm': 90,
       'level': 'Intermediate',
       'tips': 'Beautiful vowels and wide range. Practice smooth transitions.',
+      'breakdown': 'The opening phrase spans an octave - practice that leap. Focus on pure vowel sounds. Work on breath support for the long phrases. Practice the "R" sounds in "rainbow" and "somewhere".',
     },
     {
       'title': 'Let It Be',
@@ -426,6 +434,7 @@ Aankhiyaan jo anju rul de
       'bpm': 140,
       'level': 'Intermediate',
       'tips': 'Moderate pace with emotional control. Clear enunciation.',
+      'breakdown': 'Focus on the soft "L" sounds. Practice connecting words smoothly. Work on emotional expression without losing clarity. Use the repetitive structure to build consistency.',
     },
     {
       'title': 'Imagine',
@@ -434,6 +443,7 @@ Aankhiyaan jo anju rul de
       'bpm': 76,
       'level': 'Intermediate',
       'tips': 'Slow and deliberate. Focus on soft consonants.',
+      'breakdown': 'Perfect for slow speech practice. Focus on clear diction at slow tempo. Practice breath marks between phrases. Work on emotional connection without rushing.',
     },
     
     // Level 3 - Advanced
@@ -444,6 +454,7 @@ Aankhiyaan jo anju rul de
       'bpm': 138,
       'level': 'Advanced',
       'tips': 'Ultimate articulation challenge! Start at 50% tempo.',
+      'breakdown': 'Break it down: Su-per-cal-i-frag-il-is-tic-ex-pi-al-i-do-cious. Practice each syllable separately. Use a metronome starting at 60 BPM. Master the "FR" and "ST" clusters. This is your tongue twister graduation song!',
     },
   ];
 }

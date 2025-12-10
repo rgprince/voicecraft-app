@@ -1,12 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/theme.dart';
+import '../widgets/onboarding_dialog.dart';
+import 'about_screen.dart';
 import 'daily_tracker_screen.dart';
 import 'song_library_screen.dart';
 import 'progress_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showOnboarding = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFirstLaunch();
+  }
+
+  Future<void> _checkFirstLaunch() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+    
+    if (isFirstLaunch) {
+      setState(() => _showOnboarding = true);
+    }
+  }
+
+  Future<void> _dismissOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstLaunch', false);
+    setState(() => _showOnboarding = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,50 +59,73 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.person_outline),
+            icon: const Icon(Icons.info_outline),
             onPressed: () {
-              // TODO: Navigate to profile
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutScreen()),
+              );
             },
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Today's Progress Card
-            _buildTodayProgressCard(context),
-            const SizedBox(height: 24),
-            
-            // Streak Card
-            _buildStreakCard(context),
-            const SizedBox(height: 24),
-            
-            // This Week Progress
-            _buildWeekProgressCard(context),
-            const SizedBox(height: 24),
-            
-            // Quick Actions
-            Text(
-              'Quick Actions',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Today's Progress Card - Now shows 0% on fresh start
+                _buildTodayProgressCard(context),
+                const SizedBox(height: 24),
+                
+                // Streak Card - Now shows 0 on fresh start
+                _buildStreakCard(context),
+                const SizedBox(height: 24),
+                
+                // This Week Progress - Empty bars on fresh start
+                _buildWeekProgressCard(context),
+                const SizedBox(height: 24),
+                
+                // Quick Actions
+                Text(
+                  'Quick Actions',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 16),
+                _buildQuickActions(context),
+                const SizedBox(height: 24),
+                
+                // Motivational Quote
+                _buildMotivationalQuote(context),
+              ],
             ),
-            const SizedBox(height: 16),
-            _buildQuickActions(context),
-            const SizedBox(height: 24),
-            
-            // Motivational Quote
-            _buildMotivationalQuote(context),
-          ],
-        ),
+          ),
+          
+          // Onboarding Overlay
+          if (_showOnboarding)
+            Container(
+              color: Colors.black54,
+              child: Center(
+                child: OnboardingDialog(
+                  onDismiss: _dismissOnboarding,
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
 
   Widget _buildTodayProgressCard(BuildContext context) {
+    // Start with 0% - will be updated by actual practice data
+    const double progress = 0.0;
+    const int completed = 0;
+    const int total = 7;
+    
     return Card(
       child: Container(
         decoration: BoxDecoration(
@@ -97,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                   width: 120,
                   height: 120,
                   child: CircularProgressIndicator(
-                    value: 0.60,
+                    value: progress,
                     strokeWidth: 12,
                     backgroundColor: Colors.white.withOpacity(0.3),
                     valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
@@ -106,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      '60%',
+                      '${(progress * 100).toInt()}%',
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -124,9 +178,16 @@ class HomeScreen extends StatelessWidget {
             ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
             const SizedBox(height: 16),
             Text(
-              '4 of 7 exercises completed',
+              '$completed of $total exercises completed',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Colors.white.withOpacity(0.9),
+                  ),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'Start practicing to see your progress!',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.white.withOpacity(0.7),
                   ),
             ),
           ],
@@ -136,6 +197,9 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildStreakCard(BuildContext context) {
+    // Start with 0 streak - will be updated by actual data
+    const int streak = 0;
+    
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -152,22 +216,23 @@ class HomeScreen extends StatelessWidget {
                 color: AppTheme.accentColor,
                 size: 32,
               ),
-            ).animate(onPlay: (controller) => controller.repeat())
-                .shimmer(duration: 2.seconds, color: AppTheme.accentColor.withOpacity(0.5)),
+            ),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '7 Day Streak!',
+                    streak == 0 ? 'Start Your Streak!' : '$streak Day Streak!',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Keep it up! You\'re on fire! 🔥',
+                    streak == 0 
+                        ? 'Practice today to begin your journey! 💪' 
+                        : 'Keep it up! You\'re on fire! 🔥',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -198,14 +263,23 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildDayBar(context, 'M', 0.8, true),
-                _buildDayBar(context, 'T', 0.9, true),
-                _buildDayBar(context, 'W', 0.7, true),
-                _buildDayBar(context, 'T', 1.0, true),
-                _buildDayBar(context, 'F', 0.6, true),
+                // All bars start at 0 for fresh install
+                _buildDayBar(context, 'M', 0.0, false),
+                _buildDayBar(context, 'T', 0.0, false),
+                _buildDayBar(context, 'W', 0.0, false),
+                _buildDayBar(context, 'T', 0.0, false),
+                _buildDayBar(context, 'F', 0.0, false),
                 _buildDayBar(context, 'S', 0.0, false),
                 _buildDayBar(context, 'S', 0.0, false),
               ],
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'Practice daily to fill up your chart!',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.grey[600],
+                  ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -304,7 +378,9 @@ class HomeScreen extends StatelessWidget {
                   colors: [Color(0xFFEF4444), Color(0xFFF87171)],
                 ),
                 onTap: () {
-                  // TODO: Navigate to recording
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Recording feature coming soon!')),
+                  );
                 },
               ),
             ),
