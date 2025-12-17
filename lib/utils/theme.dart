@@ -3,21 +3,28 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors
-  static const primaryColor = Color(0xFF6B46C1); // Deep Purple
-  static const accentColor = Color(0xFFFBBF24); // Amber
+  static const primaryColor = Color(0xFF4F46E5); // Electric Indigo
+  static const accentColor = Color(0xFF06B6D4); // Vibrant Teal
+  static const secondaryColor = Color(0xFFEC4899); // Hot Pink for highlights
   static const surfaceColor = Color(0xFFF9FAFB);
   static const backgroundLight = Color(0xFFFFFFFF);
-  static const backgroundDark = Color(0xFF1F2937);
+  static const backgroundDark = Color(0xFF111827); // Darker gray
   
   // Gradients
   static const purplePinkGradient = LinearGradient(
-    colors: [Color(0xFF6B46C1), Color(0xFFEC4899)],
+    colors: [Color(0xFF4F46E5), Color(0xFFEC4899)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
   
+  static const blueTealGradient = LinearGradient(
+    colors: [Color(0xFF4F46E5), Color(0xFF06B6D4)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
   static const successGradient = LinearGradient(
-    colors: [Color(0xFF10B981), Color(0xFF34D399)],
+    colors: [Color(0xFF059669), Color(0xFF34D399)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

@@ -111,7 +111,7 @@ class AboutScreen extends StatelessWidget {
             
             // Footer
             Text(
-              'Made in India 🇮🇳',
+              'Thank you for using VoiceCraft',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.grey[600],
               ),
