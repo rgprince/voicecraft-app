@@ -47,14 +47,6 @@ class OnboardingDialog extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
-            Text(
-              'स्वर शिल्प में आपका स्वागत है',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: AppTheme.accentColor,
-              ),
-              textAlign: TextAlign.center,
-            ),
             const SizedBox(height: 16),
             
             // Description

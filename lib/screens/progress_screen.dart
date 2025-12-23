@@ -50,9 +50,9 @@ class ProgressScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildStatItem(context, '5', 'Days Practiced', Icons.calendar_today),
-                _buildStatItem(context, '145', 'Total Minutes', Icons.timer),
-                _buildStatItem(context, '12', 'Songs Practiced', Icons.music_note),
+                _buildStatItem(context, '0', 'Days Practiced', Icons.calendar_today),
+                _buildStatItem(context, '0', 'Total Minutes', Icons.timer),
+                _buildStatItem(context, '0', 'Songs Practiced', Icons.music_note),
               ],
             ),
           ],
@@ -127,11 +127,11 @@ class ProgressScreen extends StatelessWidget {
                   lineBarsData: [
                     LineChartBarData(
                       spots: [
-                        const FlSpot(0, 25),
-                        const FlSpot(1, 30),
-                        const FlSpot(2, 20),
-                        const FlSpot(3, 35),
-                        const FlSpot(4, 28),
+                        const FlSpot(0, 0),
+                        const FlSpot(1, 0),
+                        const FlSpot(2, 0),
+                        const FlSpot(3, 0),
+                        const FlSpot(4, 0),
                         const FlSpot(5, 0),
                         const FlSpot(6, 0),
                       ],

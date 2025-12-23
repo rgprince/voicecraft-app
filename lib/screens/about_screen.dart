@@ -42,17 +42,12 @@ class AboutScreen extends StatelessWidget {
                 color: AppTheme.primaryColor,
               ),
             ),
-            Text(
-              'स्वर शिल्प',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppTheme.accentColor,
-              ),
-            ),
             const SizedBox(height: 8),
             Text(
               'Version 1.0.0',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.grey[600],
+                color: Colors.grey[700],
+                fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 32),
@@ -149,7 +144,10 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             content,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[800],
+              height: 1.5,
+            ),
           ),
         ],
       ),

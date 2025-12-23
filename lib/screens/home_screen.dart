@@ -48,18 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
             const Icon(Icons.mic, color: AppTheme.primaryColor),
             const SizedBox(width: 8),
             const Text('VoiceCraft'),
-            const SizedBox(width: 4),
-            Text(
-              'स्वर शिल्प',
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: AppTheme.accentColor,
-                  ),
-            ),
           ],
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.info_outline),
+            icon: const Icon(Icons.account_circle_outlined),
             onPressed: () {
               Navigator.push(
                 context,

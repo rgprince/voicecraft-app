@@ -137,7 +137,14 @@ class _DailyTrackerScreenState extends State<DailyTrackerScreen> {
       floatingActionButton: allTasksCompleted
           ? FloatingActionButton.extended(
               onPressed: () {
-                Navigator.pop(context);
+                _confettiController.play();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('🎉 Great job! All tasks completed for today!'),
+                    backgroundColor: Colors.green,
+                    duration: Duration(seconds: 3),
+                  ),
+                );
               },
               icon: const Icon(Icons.check_circle),
               label: const Text('Day Complete!'),
